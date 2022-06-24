@@ -10,6 +10,7 @@
 
 
 /* ---- Base Rules ---- */
+
 body {
     background: rgb(136,203,171);
     background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
@@ -17,7 +18,27 @@ body {
     font-family: 'Merriweather', serif;
     color: #fff;
 }
-
+.inline-right {
+    display: inline-block;
+    text-align: right;
+}
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position:absolute; /*88*/
+    background-color: #fff;
+    right:0;
+    width: 100vw;
+    height: 100vh;
+    color: #000;
+    z-index: -1;
+    opacity: 1;
+}
+.hidden {
+    opacity: 0;
+}
 
 /* Typeography General*/
 h1 {
@@ -64,11 +85,20 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
+.navbar__logo {
+    display: inline-block;
+    padding: 0.3em 1em;
+    cursor: pointer;
+}
+.navbar__menu {
+    float: right;
+    position: relative;
+}
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
-    text-align: right;
 }
+
 
 .navbar__menu li {
     display: inline-block;
@@ -87,14 +117,44 @@ section {
     color: #fff;
     transition: ease 0.3s all;
 }
+.navbar__icon {
+    display: none;
+    float: right;
+    padding: 0.5em 1em;
+}
+.navbar__icon button {
+    border:0;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+.navbar__icon svg {
+    height:30px;
+    width: 30;
+    fill:#02b3e4;
+}
+@media only screen and (max-width: 35em){
+    .navbar__icon{
+        display: inline-block;
+    }
+    
+    .inline-right {
+        display: none;
+    }
+    
+
+}
 
 /* Header Styles */
+
+
 .page__header {
     background: #fff;
-    position: fixed;
-    top: 0;
     width: 100%;
     z-index: 5;
+    position: fixed;
+    top: 0;
+    transition: all 0.5s ease;
 }
 
 /* Footer Styles */
@@ -220,4 +280,26 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+
+.scroll__top {
+    position: fixed;
+    bottom: 20px;
+    right:20px;
+    background-color: transparent;
+    color:#fff;
+    font-size: 0.8rem;
+    border:0;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+
+}
+.scroll__top button {
+    border-radius: 50%;
+    border: 0;
+}
+.scroll__top p {
+    margin: 0;
+    padding: 2px 0;
 }
