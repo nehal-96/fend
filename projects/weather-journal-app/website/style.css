@@ -1,27 +1,52 @@
-body{
-    background: #fffff8;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: url('images/bg.jpg') no-repeat/*#324A5E*/;
+    background-size: 100% 100%;
 }
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
+    grid-auto-flow: dense;
+    grid-template-columns: [col-1] 45% 45% [col-2];
+    grid-auto-rows: max-content;
+    grid-template-areas: ' headline headline' 'zip entry' 'feel entry';
+    max-width: 100vw;
     height:100vh;
-    background: #f23557;
-    color: #f0d43a;
+    color: #ffd800;
     justify-content: center;
     grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-size: 27px;
+    font-family: 'Edu QLD Beginner', cursive;
 }
-
+/* app styles*/
+.blur{
+    backdrop-filter: blur(5px);
+}
+.darky {
+    backdrop-filter: brightness(0.6);
+}
+/*widgets styles*/
 .holder{
-
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
 }
 
 .entry{
+    grid-area: entry;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.entryContainer {
     background: rgba(59, 74, 107, .4);
+    position: relative;
 }
 
 #entryHolder{
@@ -39,50 +64,157 @@ body{
 #content{
 
 }
+#weather__icon {
+    position: relative;
+}
 
 .headline {
+    text-align: center;
+    grid-area: headline;
+    letter-spacing: 10px;
+    font-size: 32px;
+    font-family: 'Edu QLD Beginner', cursive;
+    margin-top: 50px;
 
 }
 .title{
 
+}
+.zip {
+    grid-area: zip;
+}
+.feel {
+    display: flex;
+    flex-direction: column;
+    grid-area: feel;
+}
+/* icon style settings*/
+.hidden {
+    opacity: 0;
+}
+.thunder_icon {
+    animation: thunder 2s linear infinite;
+    width: 50%;
+    top: 68px;
+    right: -5rem;
+    z-index: 2;
+}
+.cloud2 {
+    right: -6rem;
+    z-index: 2;
+    animation: cloud2 6s linear infinite;
+}
+.lightening {
+    animation: thunder_cloud 2s linear infinite;
+}
+.thunder {
+    filter: brightness(0.5);
+}
+.cloud1 {
+    animation: cloud1 6s linear infinite;
+}
+.mist {
+    width: 40%;
+    top: 2.5rem;
+    animation: cloud2 8s linear infinite;
+
+}
+.mist:last-of-type {
+    right: -2rem;
+    animation: cloud1 9s linear infinite;
+}
+
+.drop {
+    width: 20%;
+    z-index: 1;
+    right: -6rem;
+    top: 25px;
+    animation: drop 1.5s linear infinite;
+
+}
+.drop:first-of-type {
+    right: -3.5rem;
+    top: 23px;
+    animation: drop 1.8s linear infinite;
+}
+.drop:nth-of-type(2) {
+    right: -0.5rem;
+    top: 20px;
+    animation: drop 2s linear infinite;
+}
+.snow {
+    width: 20%;
+    z-index: 1;
+    right: -6rem;
+    top: 55px;
+    animation: flake 5s linear infinite;
+
+}
+.snow:first-of-type {
+    right: -3.5rem;
+    top: 53px;
+    animation: flake 7s linear infinite;
+}
+.snow:nth-of-type(2) {
+    right: -0.5rem;
+    top: 55px;
+    animation: flake 6s linear infinite;
+}
+.sun {
+    top:-4rem;
+    right: -7rem;
+    z-index: 0;
+    animation: spin 8s linear infinite forwards;
+}
+img {
+    width: 70%;
+    position: absolute;
+    right: -8rem;
+    z-index: 3;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
     display:block;
     font-size: 27px;
+    margin-bottom: 5px;
 }
 
 input{
     display:block;
     height: 60px;
     width: 320px;
-    background:#22b2da;
+    background:#f0fcff5e;
     color: #f0d43a;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Edu QLD Beginner', cursive;
     border: none;
+    border-radius: 11px;
+    padding: 5px;
 }
 
 button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
+    width: 50%;
+    height: 20%;
+    background: #092666cf;
     color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Edu QLD Beginner', cursive;
     border: none;
     box-shadow: 2px 4px 5px #444;
+    font-size: 26px;
 }
 h1{
-    font-size: 36px;
 }
 
 textarea{
-    background:#22b2da;
+    background:#f0fcff5e;
     color: #f0d43a;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Edu QLD Beginner', cursive;
+    padding: 5px;
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 11px;
 }
 /* Reset style for HTML element on active to have no border*/
 input:focus,
@@ -109,3 +241,146 @@ button:focus {
     font-family: 'Oswald', sans-serif;
 
 } 
+/* weather icons animation*/
+@keyframes thunder {
+    0%, 100% {
+        opacity: 0;
+    }
+    23% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+    }
+    35% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+}
+@keyframes thunder_cloud {
+    0%, 100% {
+        filter: brightness(0.5);
+    }
+    23% {
+        filter: brightness(0.5);
+    }
+    25% {
+        filter: brightness(1);
+    }
+    30% {
+        filter: brightness(0.5);
+    }
+    35% {
+        filter: brightness(1);
+    }
+    40% {
+        filter: brightness(0.5);
+    }
+}
+@keyframes flake {
+    0% {
+        transform: translate(5px, 10px);
+        opacity: 1;
+    }
+    25% {
+        transform: translate(5px, 25px);
+    }
+    30% {
+        transform: translate(-5px, 23px);
+    }
+    45% {
+        transform: translate(7px, 45px);
+    }
+    65% {
+        transform: translate(-7px, 40px);
+    }
+    75% {
+        transform: translate(7px, 55px);
+        opacity: 0.7;
+    }
+    85% {
+        transform: translate(-5px, 50px);
+        opacity: 0.5;
+    }
+    90% {
+        transform: translate(5px, 65px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(5px, 75px);
+        opacity: 0.4;
+    }
+
+}
+@keyframes drop {
+    0% {
+        transform: translate(0px, 30px);
+        opacity: 1;
+    }
+    25% {
+        transform: translate(0px, 35px);
+    }
+    45% {
+        transform: translate(0px, 55px);
+    }
+    75% {
+        transform: translate(0px, 65px);
+        opacity: 0.7;
+    }
+    85% {
+        transform: translate(0px, 70px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0px, 80px);
+        opacity: 0.4;
+    }
+
+}
+
+@keyframes spin {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(290deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    
+}
+
+@keyframes cloud1 {
+    25% {
+        transform: translate(15px, 0);
+    }
+    55% {
+        transform: translate(5px, 0);
+    }
+    85% {
+        transform: translate(15px, 0);
+    }
+}
+@keyframes cloud2 {
+    25% {
+        transform: translate(-15px, 0);
+    }
+    55% {
+        transform: translate(-5px, 0);
+    }
+    85% {
+        transform: translate(-15px, 0);
+    }
+}

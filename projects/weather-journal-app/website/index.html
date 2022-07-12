@@ -4,10 +4,13 @@
 <meta charset="UTF-8">
 <title>Weather Journal</title>
 <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+QLD+Beginner:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
  <body>
-<div id = "app">
+<div id = "app" class="darky">
   <div class ="holder headline">
     Weather Journal App
   </div>
@@ -21,14 +24,38 @@
     <button id="generate" type = "submit"> Generate </button>
   </div>
   <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
-   <div id = "entryHolder">
-    <div id = "date"></div> 
-   <div id = "temp"></div>
-   <div id = "content"></div>
+    <div class="entryContainer">
+      <div class = "title">Most Recent Entry</div>
+      <div id = "entryHolder">
+        <div id = "date"></div> 
+        <div id = "temp">
+        </div>
+        <div id = "content"></div>
+        <div id = "description"></div>
+        <div id="weather__icon" class="">
+          <div class="hidden">
+          <img src="images/drop.svg" alt="drop-icon" class="drop">
+          <img src="images/drop.svg" alt="drop-icon" class="drop">
+          <img src="images/drop.svg" alt="drop-icon" class="drop">
+          </div>
+          <div class="hidden">
+          <img src="images/snow.svg" alt="snow-icon" class="snow">
+          <img src="images/snow.svg" alt="snow-icon" class="snow">
+          <img src="images/snow.svg" alt="snow-icon" class="snow">
+          </div>
+          <img src="images/sun.svg" alt="sun-icon" class="sun hidden">
+          <img src="images/cloud.svg" alt="cloud-icon" class="cloud2 hidden">
+          <img src="images/cloud.svg" alt="cloud-icon" class="cloud1 hidden">
+          <img src="images/thunder.svg" alt="thunder-icon" class="hidden">
+          <div class="hidden"> 
+          <img src="images/mist.svg" alt="mist-icon" class="mist">
+          <img src="images/mist.svg" alt="mist-icon" class="mist">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
-  </div>
+</div>
 <script src="app.js" type="text/javascript"></script>
 
 </body>
