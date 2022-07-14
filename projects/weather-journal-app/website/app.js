@@ -1,5 +1,8 @@
+import TOKEN from './config.js'
+console.log(TOKEN)
+
 /* Global Variables */
-const apiKey = '21266dcdc592c6cd18f5e49a2317e9f4&units=imperial';
+const apiKey = TOKEN;
 
 const icons = document.getElementById('weather__icon').children
 const app = document.getElementById('app')
