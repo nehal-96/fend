@@ -9,7 +9,7 @@ const app = document.getElementById('app')
 const generateBtn = document.getElementById('generate')
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();;
 
 // Get the data from the server 
 const getData = async (url='') => {
@@ -46,7 +46,7 @@ const postData = async (url='', data={}) => {
 async function updateUI(){
     getData('/updatedData').then(data=>{
         // update text content
-        document.getElementById('temp').textContent = Math.round((Math.round(data.temp)-32) *5 / 9)+ '°C';
+        document.getElementById('temp').textContent = Math.round(data.temp)+ ' degrees';
         document.getElementById('content').textContent = data.userFeelings;
         document.getElementById('date').textContent = data.date;
         let description = '';
